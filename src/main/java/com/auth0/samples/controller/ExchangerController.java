@@ -31,7 +31,7 @@ public class ExchangerController
             return exchangeString(from, to, amount);
         }
 
-        throw new MissingParameterException("No param");
+        throw new WrongParameterException("Wrong parameter");
     }
 
     private String exchangeString(Currency from, Currency to, int amount)
