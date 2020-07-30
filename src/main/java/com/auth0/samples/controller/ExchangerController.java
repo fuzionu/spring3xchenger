@@ -21,26 +21,21 @@ public class ExchangerController
                                  @RequestParam Currency to,
                                  @RequestParam int amount)
     {
-        if (dataType.equalsIgnoreCase("json"))
+        if (dataType.equalsIgnoreCase("int"))
         {
-            return exchange_json(from, to, amount);
+            return exchanger.exchange(from, to, amount);
         }
 
         else if (dataType.equalsIgnoreCase("string"))
         {
-            return exchange_string(from, to, amount);
+            return exchangeString(from, to, amount);
         }
 
         throw new MissingParameterException("No param");
     }
 
-    private String exchange_string(Currency from, Currency to, int amount)
+    private String exchangeString(Currency from, Currency to, int amount)
     {
         return amount + " " + from + " exchanged to " + to + " is " + exchanger.exchange(from, to, amount);
-    }
-
-    private int exchange_json(Currency from, Currency to, int amount)
-    {
-        return exchanger.exchange(from, to, amount);
     }
 }
